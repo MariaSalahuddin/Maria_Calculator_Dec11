@@ -20,4 +20,5 @@
     <string name="history">Advance - With History</string>
     <string name="standard_no_history">Standard - No History</string>
     <string name="no_history_to_show">No History to Show</string>
+    <string name="historyheading">History</string>
 </resources>
