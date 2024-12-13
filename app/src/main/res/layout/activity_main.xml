@@ -201,16 +201,4 @@
             />
 
     </LinearLayout>
-    <TextView
-        android:layout_below="@id/row5"
-        android:id="@+id/history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_margin="16dp"
-        android:lineSpacingExtra="5dp"
-        android:visibility="gone"
-        android:textSize="20sp"
-        android:scrollbars="vertical"
-        />
 </RelativeLayout>

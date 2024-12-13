@@ -1,5 +1,6 @@
 package com.example.maria_calculator_dec11;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -19,16 +20,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EditText display;
-    TextView historyTextView;
+
     Button historyButton;
     String input = "";
-    ArrayList<String> history = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         display = findViewById(R.id.display);
-        historyTextView = findViewById(R.id.history);
         historyButton = findViewById(R.id.buttonHistory);
         // Number Buttons
         int[] numberIds = {R.id.button0, R.id.button1, R.id.button2, R.id.button3,
@@ -49,20 +49,10 @@ public class MainActivity extends AppCompatActivity {
             display.setText("");
         });
         findViewById(R.id.buttonHistory).setOnClickListener(v -> {
-            if (historyTextView.getVisibility() == View.VISIBLE) {
-                historyButton.setText(R.string.history);
-                historyTextView.setVisibility(View.GONE);
+      Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 
-            }
-            else {
-                String result = TextUtils.join("\n", history);
-                historyTextView.setVisibility(View.VISIBLE);
-               if(!result.isEmpty())
-                historyTextView.setText(result);
-               else
-                   historyTextView.setText(R.string.no_history_to_show);
-                historyButton.setText(R.string.standard_no_history);
-            }
+         startActivity(intent);
+
         });
 
         // Equals Button
@@ -74,12 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 String result = Calculator.calculation(input);
                 display.setText(result);
-                history.add(input +" = " +result);
+                MyApp.history.add(input +" = " +result);
                 input = result;
-                if (historyTextView.getVisibility() == View.VISIBLE) {
-                    String historyResult = TextUtils.join("\n", history);
-                    historyTextView.setText(historyResult);
-                }
             }
         });
 
